@@ -17,17 +17,17 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('result');
             $table->text('pgn');
-            $table->string('platform');
+            $table->string('site');
             $table->string('time_control');
+            $table->string('white');
+            $table->string('white_elo');
+            $table->string('black');
+            $table->string('black_elo');
             $table->string('opponent_type');
-            $table->string('opponent_name');
-            $table->string('opponent_rating');
-            $table->string('rating');
+            $table->string('termination');
+            $table->string('result');
             $table->dateTime('date_played');
-            $table->text('embed');
-            $table->text('notes');
             $table->foreignIdFor(User::class)->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
